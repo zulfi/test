@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+         version="3.0"
+         metadata-complete="true">
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            /WEB-INF/spring/application-context.xml
+        </param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+    </listener>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <context-param>
+        <param-name>log4jConfigLocation</param-name>
+        <param-value>/WEB-INF/log4j.properties</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>api</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>
+                /WEB-INF/spring/cliqr-access-web.xml
+            </param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>api</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <description>Ssh Tunnel servlet.</description>
+        <servlet-name>SshTunnel</servlet-name>
+        <servlet-class>com.osmosix.tunnel.http.SshTunnel</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SshTunnel</servlet-name>
+        <url-pattern>/stunnel</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description>Vnc Tunnel servlet.</description>
+        <servlet-name>VncTunnel</servlet-name>
+        <servlet-class>com.osmosix.tunnel.http.VncTunnel</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VncTunnel</servlet-name>
+        <url-pattern>/vtunnel</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description>Rdp Tunnel servlet.</description>
+        <servlet-name>RdpTunnel</servlet-name>
+        <servlet-class>com.osmosix.tunnel.http.RdpTunnel</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RdpTunnel</servlet-name>
+        <url-pattern>/rtunnel</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <description>Vnc Over SSH Tunnel servlet.</description>
+        <servlet-name>VncOverSshTunnel</servlet-name>
+        <servlet-class>com.osmosix.tunnel.http.VncOverSshTunnel</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>VncOverSshTunnel</servlet-name>
+        <url-pattern>/vstunnel</url-pattern>
+    </servlet-mapping>
+</web-app>
+
+
+

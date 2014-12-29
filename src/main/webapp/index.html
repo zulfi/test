@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>CliQr Remote Access</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.2/css/jquery.dataTables.css">
+        <!--[if lt IE 9]>
+			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+	</head>
+	<body>
+
+
+    <div class="modal" data-backdrop="static" id="login">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <h3 class="text-center text-capitalize">REMOTE ACCESS CONSOLE</h3>
+                    <form class="form-signin">
+                        <input type="text" class="form-control" placeholder="username" required autofocus>
+                        <br>
+                        <input type="password" class="form-control" placeholder="password" required>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">
+                            Sign in</button>
+                        <label class="checkbox pull-left">
+                            <input type="checkbox" value="remember-me">
+                            Remember me
+                        </label>
+                        <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+                    </form>
+                    <div class="error-msg text-center hide">
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="modal" data-backdrop="static" id="logout">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" data-dismiss="modal" class="close"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <!--<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>-->
+                <h4>Log Out</h4>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to logout?</p>
+            </div>
+            <div class="modal-footer">
+                <button data-dismiss="modal" class="btn btn-primary">Yes</button>
+                <a href="#" class="btn btn-primary">Cancel</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="navbar navbar-fixed-top alt" data-spy="affix" data-offset-top="1000">
+  <div class="container">
+    <div class="navbar-header">
+      <a href="#" class="navbar-brand"><i class="icon-home icon-2x"></i></a>
+      <!--<a class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+      <!--</a>-->
+    </div>
+    <div class="navbar-collapse collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#connections">Connections</a></li>
+        <li><a href="#connect">Connect</a></li>
+        <li><a href="#configure">Configure</a></li>
+        <li><a href="#complain">Complain</a></li>
+        <li><a data-toggle="modal" href="#login" class="login">CheckIn</a></li>
+      </ul>
+    </div>
+   </div>
+</div>
+
+<div class="header alt vert">
+  <div class="container">
+    
+    <h1>CliQr Guacamole Server</h1>
+      <p class="lead">Admin Console (to be completed)</p>
+      <!--<div>&nbsp;</div>-->
+      <!--<a href="#" class="btn btn-default btn-lg">LOG IN</a>-->
+  </div>
+</div>
+<div id="connections" class="blurb">
+  <div class="container">
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1>Connections</h1>
+        </div>
+    </div>
+    <div class="row">
+      <div>
+      </div>
+      <div class="table-space">
+      <table id="connectionTable" class="display compact" cellspacing="0" width="100%" >
+      <thead>
+      <tr>
+          <th>Connection Id</th>
+          <th>HostName</th>
+          <th>Type</th>
+          <th>Opened on</th>
+          <th>Closed on</th>
+          <th>Status</th>
+      </tr>
+      </thead>
+
+      <tfoot>
+      <tr>
+          <th>Connection Id</th>
+          <th>HostName</th>
+          <th>Type</th>
+          <th>Opened on</th>
+          <th>Closed on</th>
+          <th>Status</th>
+      </tr>
+      </tfoot>
+
+
+      <tbody>
+      <tr>
+        <td>No connections data from the backend</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+      </tr>
+      </tbody>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="featurette" id="connect">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>CONNECT?</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-3 text-center">
+        <div class="featurette-item">
+          <i class="icon-terminal"></i>
+          <h4>SSH</h4>
+        </div>
+      </div>
+      <div class="col-md-2 text-center">
+        <div class="featurette-item">
+          <i class="icon-desktop"></i>
+          <h4>VNC</h4>
+        </div>
+      </div>
+      <div class="col-md-2 text-center">
+        <div class="featurette-item">
+          <i class="icon-windows"></i>
+          <h4>RDP</h4>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>Recent Connections</h2>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="callout" id="sec3">-->
+  <!--<div class="vert">-->
+    <!--<div class="col-md-12 text-center"><h2>Random People With Sunglasses</h2></div>-->
+    <!--<div class="col-md-12 text-center">&nbsp;</div>-->
+    <!--<div class="col-md-8 col-md-offset-2 text-center">-->
+      <!--<div class="row hidden-xs">-->
+       <!--<div class="col-sm-2"><img class="img-circle grayscale" src="http://api.randomuser.me/portraits/thumb/women/12.jpg"></div>-->
+       <!--<div class="col-sm-2"><img class="img-circle grayscale" src="http://api.randomuser.me/portraits/thumb/men/95.jpg"></div>-->
+       <!--<div class="col-sm-2"><img class="img-circle grayscale" src="http://api.randomuser.me/portraits/thumb/women/67.jpg"></div>-->
+       <!--<div class="col-sm-2"><img class="img-circle grayscale" src="http://api.randomuser.me/portraits/thumb/men/27.jpg"></div>-->
+       <!--<div class="col-sm-2"><img class="img-circle grayscale" src="http://api.randomuser.me/portraits/thumb/women/15.jpg"></div>  -->
+       <!--<div class="col-sm-2"><img class="img-circle grayscale" src="http://api.randomuser.me/portraits/thumb/men/18.jpg"></div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div class="blurb settings-page" id="configure">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h1>Configure?</h1>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-2 col-md-offset-2 text-center">
+          <div class="settings-item">
+              <i class="icon-gear"></i>
+              <h5>SERVER</h5>
+          </div>
+      </div>
+      <div class="col-md-2 text-center">
+          <div class="settings-item">
+              <i class="icon-terminal"></i>
+              <h5>SSH</h5>
+          </div>
+      </div>
+      <div class="col-md-2 text-center">
+          <div class="settings-item">
+              <i class="icon-desktop"></i>
+              <h5>VNC</h5>
+          </div>
+      </div>
+      <div class="col-md-2 text-center">
+          <div class="settings-item">
+              <i class="icon-windows"></i>
+              <h5>RDP</h5>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div class="gallery">-->
+  <!---->
+  <!--<div class="row">-->
+      <!--<div class="col-md-6 col-md-offset-3 text-center">-->
+        <!--<h5>This Template is Responsive</h5>-->
+        <!--<h2>Features Galore</h2>-->
+        <!--<br>-->
+      <!--</div>-->
+  <!--</div>-->
+  <!---->
+  <!--<div class="container well well-lg">-->
+    <!---->
+    <!--<div class="row">-->
+    		<!---->
+      	<!--<div class="col-sm-3">-->
+          <!--<div class="list-group">-->
+            <!--<a href="#" class="list-group-item">-->
+              <!--<span class="text-success"><i class="icon-film"></i></span> Carousel</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-3">-->
+          <!--<div class="list-group">-->
+            <!--<a href="#" class="list-group-item">-->
+              <!--<span class="text-success"><i class="icon-folder-close-alt"></i></span> Tabs</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-3">-->
+          <!--<div class="list-group">-->
+            <!--<a href="#" class="list-group-item">-->
+              <!--<span class="text-success"><i class="icon-credit-card"></i></span> Modal</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-3">-->
+          <!--<div class="list-group">-->
+            <!--<a href="#" class="list-group-item">-->
+              <!--<span class="text-success"><i class="icon-reorder"></i></span> Navigation</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-3">-->
+          <!--<div class="list-group">-->
+            <!--<a href="#" class="list-group-item">-->
+              <!--<span class="text-success"><i class="icon-mobile-phone"></i></span> Mobile-first</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-3">-->
+          <!--<div class="list-group">-->
+            <!--<a href="#" class="list-group-item">-->
+              <!--<span class="text-success"><i class="icon-align-justify"></i></span> Accordion</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-3">-->
+          <!--<div class="list-group">-->
+            <!--<a href="#" class="list-group-item">-->
+              <!--<span class="text-success"><i class="icon-list-alt"></i></span> Panel</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-3">-->
+          <!--<div class="list-group">-->
+            <!--<a href="#" class="list-group-item">-->
+              <!--<span class="text-success"><i class="icon-check"></i></span> Form</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-3">-->
+          <!--<div class="list-group">-->
+            <!--<a href="#" class="list-group-item">-->
+              <!--<span class="text-success"><i class="icon-table"></i></span> Table</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-3">-->
+          <!--<div class="list-group">-->
+            <!--<a href="#" class="list-group-item">-->
+              <!--<span class="text-success"><i class="icon-eye-open"></i></span> Icons</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-3">-->
+          <!--<div class="list-group">-->
+            <!--<a href="#" class="list-group-item">-->
+              <!--<span class="text-success"><i class="icon-th"></i></span> Responsive Grid</a>-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-sm-3">-->
+          <!--<div class="list-group">-->
+            <!--<a href="#" class="list-group-item">-->
+              <!--<span class="text-success"><i class="icon-font"></i></span> Typography</a>-->
+          <!--</div>-->
+        <!--</div>      -->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<!--<div class="blurb">-->
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-5">-->
+        <!--<h1><i class="icon-plane icon-3x"></i></h1>-->
+      <!--</div>-->
+      <!--<div class="col-md-7">-->
+        <!--<h1 class="pull-right">Launch Your Web Design</h1>-->
+        <!--<p class="lead pull-right">With this Responsive Bootstrap Template</p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div class="blurb bright" id="complain">
+  
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center">
+          <h1>Issue?</h1>
+        <br>
+      </div>
+  </div>
+  <hr>
+
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center">
+          <ul class="list-inline">
+              <h3>We'd <i class="icon-heart-empty"></i> to help!</h3>
+              <p>Everytime you ignore to report a genuine issue, god kills a cute baby panda!</p>
+              <li> <i class="icon-envelope icon-2x"></i> ram@cliqr.com </li>
+              <li><i class="icon-skype icon-2x"></i> irraju </li>
+          </ul>
+      </div>
+  </div>
+
+  <div class="row">
+    <!--<div class="col-sm-4 col-sm-offset-2">-->
+         <!--<div class="panel panel-default">-->
+         <!--<div class="panel-heading text-center"><h2><i class="icon-chevron-left"></i> Left</h2></div>-->
+         <!--<div class="panel-body text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. -->
+          <!--Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis -->
+          <!--dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. -->
+          <!--Aliquam in felis si.-->
+            <!--<div class="row">&nbsp;</div>-->
+          <!--<button class="btn btn-lg btn-primary btn-block">Login</button> -->
+          <!--</div>-->
+         <!--</div>-->
+ 	<!--</div>-->
+    <!--<div class="col-sm-4">-->
+         <!--<div class="panel panel-default">-->
+         <!--<div class="panel-heading text-center"><h2>Right <i class="icon-chevron-right"></i></h2></div>-->
+         <!--<div class="panel-body text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. -->
+          <!--Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis -->
+          <!--dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. -->
+          <!--Aliquam in felis sit.-->
+           <!--<div class="row">&nbsp;</div>-->
+          <!--<button class="btn btn-lg btn-primary btn-block">Sign Up</button> -->
+           <!---->
+          <!--</div>-->
+         <!--</div>-->
+ 	<!--</div>-->
+  </div>
+</div>
+
+<!--<div class="blurb">-->
+  <!--<div class="container">-->
+    <!--<div class="row">-->
+      <!--<div class="col-md-6 col-md-offset-3 text-center">-->
+        <!--<h3>Sharing the Bootstrap Love</h3>-->
+        <!--<p class="lead"></p>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center">
+        <p>Built with <i class="icon-heart-empty"></i> at <a href="http://www.bootply.com">Bootply</a>.<br>CliQr ©2014</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<ul class="nav pull-right scroll-down">
+  <li><a href="#" title="Scroll down"><i class="icon-chevron-down icon-3x"></i></a></li>
+</ul>
+<ul class="nav pull-right scroll-top">
+  <li><a href="#" title="Scroll to top"><i class="icon-chevron-up icon-3x"></i></a></li>
+</ul>
+
+
+
+	<!-- script references -->
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<!--<script src="js/scripts.js"></script>-->
+        <!--<script type="text/javascript" charset="utf8" src="//code.jquery.com/jquery-1.10.2.min.js"></script>-->
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.2/js/jquery.dataTables.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#connectionTable').dataTable( {
+                "scrollY":        "400px",
+                "scrollCollapse": true,
+                "paging":         false
+            } );
+            $('.scroll-top').click(function(){
+                $('body,html').animate({scrollTop:0},800);
+            });
+            /* smooth scrolling for scroll down */
+            $('.scroll-down').click(function(){
+                $('body,html').animate({scrollTop:$(window).scrollTop()+800},1000);
+            });
+
+            //TODO - to be completed
+            $('.form-signin').submit(function(){
+                $('.error-mgs').addClass('hide');
+                var username = $("#username").val();
+                var password = $("#password").val();
+                var data =
+                        "username=" + encodeURIComponent(username)
+                        + "&password=" + encodeURIComponent(password);
+                var xhr = new XMLHttpRequest();
+                xhr.open("POST", "api/user/login", false);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.send(data);
+
+                if(xhr.status != 200){
+                    $('.error-smg').val(xhr.responseText);
+                }
+
+                $("#username").blur();
+                $("#password").blur();
+
+            });
+
+            /* highlight the top nav as scrolling occurs */
+            $('body').scrollspy({ target: '#navbar' });
+
+        } );
+
+    </script>
+	</body>
+</html>
